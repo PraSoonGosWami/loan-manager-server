@@ -39,6 +39,10 @@ app.use("/api/user", userRoutes);
 // loan routes
 app.use("/api/loan", loanRoutes);
 
+app.use("/", (req, res, next) => {
+  res.status(200).json({ message: "Hello world" });
+});
+
 //error handling
 app.use((error, req, res, next) => {
   if (res.headerSent) {
