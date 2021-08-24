@@ -24,11 +24,12 @@ const corsOptions = {
   origin: whitelist,
   optionsSuccessStatus: 200,
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 
+app.get();
 // admin routes
 app.use("/api/admin", adminRoutes);
 
