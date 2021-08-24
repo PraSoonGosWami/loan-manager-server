@@ -7,7 +7,6 @@ const { findUserById } = require("./user-controller");
 const { findAdminByID, getAdminListForMail } = require("./admin-controller");
 const { sendEmailToAdmins } = require("../utils/send-email");
 const sendMessage = require("../utils/fcm");
-const { toolresults_v1beta3 } = require("googleapis");
 
 /**
  *
@@ -326,7 +325,6 @@ const approveLoanApplication = async (req, res, next) => {
     );
   }
   const userFCMToken = updatedLoan?.creator?.fcmToken;
-  //TODO Send email to user
   if (userFCMToken)
     await sendMessage(
       [userFCMToken],
