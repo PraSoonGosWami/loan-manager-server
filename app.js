@@ -19,7 +19,10 @@ const MongoPsd = process.env.mongoPsd;
 const MONGO_URL = `mongodb+srv://${MongoUser}:${MongoPsd}@clusterx-tn29p.mongodb.net/${DBName}?retryWrites=true&w=majority`;
 
 //CORS policy protection
-const whitelist = ["http://localhost:3000", "http://192.168.29.109:3000"];
+const whitelist = [
+  "http://localhost:3000",
+  "https://loan-manager-323408.web.app",
+];
 const corsOptions = {
   origin: whitelist,
   optionsSuccessStatus: 200,
@@ -37,10 +40,6 @@ app.use("/api/user", userRoutes);
 
 // loan routes
 app.use("/api/loan", loanRoutes);
-
-app.use("/", (req, res, next) => {
-  res.status(200).json({ message: "Hello world" });
-});
 
 //error handling
 app.use((error, req, res, next) => {
