@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const { totp } = require("otplib");
 const HttpError = require("../models/http-error");
 const userModel = require("../models/user-model");
-const generateJWT = require("../utils/generateJwt");
+const generateJWT = require("../utils/generateJWT");
 const { sendEmail } = require("../utils/send-email");
 
 /**
@@ -120,7 +120,7 @@ const verify = async (req, res, next) => {
       new HttpError("Cannot find user associated with this email", 403)
     );
   }
-  //if password is correct then generates JWT token
+  //generates JWT token
   const { token, error } = generateJWT(existingUser);
   if (error)
     return next(
